@@ -30,7 +30,7 @@ cd django-clientes-banco
 Es recomendable usar un entorno virtual para evitar conflictos de dependencias:
 ```bash
 python3 -m venv djangoenv
-source djangoenv/bin/activate  # En Windows: djangoenv\Scripts\activate
+source ../djangoenv/bin/activate
 ```
 ### 3. Instalar dependencias
 ```bash
@@ -118,4 +118,23 @@ desde un navegador ingresar a las siguientes urls
 ```bash
 git pull
 git push
+```
+
+
+### Cargar clientes
+Ir a la carpeta raiz del proyecto, luego activar el entorno virtual 
+```bash
+source ../djangoenv/bin/activate
+```
+Finalmente ejecutar el script para cargar los clientes en la base de datos
+```bash
+python manage.py cargar_clientes
+```
+desactivar entorno virtual
+```bash
+deactivate
+```
+Reiniciar el servidor Apache2
+```bash
+sudo systemctl restart apache2
 ```
