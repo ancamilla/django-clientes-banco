@@ -8,15 +8,23 @@
 <!-- Formulario de filtros -->
 <form method="get" class="mb-4">
     <div class="row g-3">
-        <div class="col-md-4">
+        <!-- Búsqueda por Cliente ID -->
+        <div class="col-md-3">
+            <label for="id_cliente_id" class="form-label">Cliente ID</label>
+            {{ filter.form.cliente_id }}
+        </div>
+        <!-- Filtrar por Género -->
+        <div class="col-md-3">
             <label for="id_genero" class="form-label">Género</label>
             {{ filter.form.genero }}
         </div>
-        <div class="col-md-4">
+        <!-- Filtrar por Activo -->
+        <div class="col-md-3">
             <label for="id_activo" class="form-label">Activo</label>
             {{ filter.form.activo }}
         </div>
-        <div class="col-md-4">
+        <!-- Filtrar por Nivel de Satisfacción -->
+        <div class="col-md-3">
             <label for="id_nivel_satisfaccion" class="form-label">Nivel de Satisfacción</label>
             {{ filter.form.nivel_satisfaccion }}
         </div>
