@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Cliente{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="text-danger">Eliminar Cliente</h1>
+    <p class="fs-4">¿Estás seguro que deseas eliminar al cliente <strong>{{ cliente.cliente_id }}</strong>?</p>
+    <form method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-lg">
+            <i class="fas fa-trash-alt"></i> Eliminar
+        </button>
+    </form>
+    <a href="{% url 'listar_clientes' %}" class="btn btn-secondary btn-lg">
+        <i class="fas fa-times"></i> Cancelar
+    </a>
+</div>
+{% endblock %}
+

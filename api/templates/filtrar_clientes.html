@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Filtrar Clientes{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Filtrar Clientes</h1>
+
+<!-- Formulario de filtros -->
+<form method="get" class="mb-4">
+    <div class="row g-3">
+        <div class="col-md-4">
+            <label for="id_genero" class="form-label">Género</label>
+            {{ filter.form.genero }}
+        </div>
+        <div class="col-md-4">
+            <label for="id_activo" class="form-label">Activo</label>
+            {{ filter.form.activo }}
+        </div>
+        <div class="col-md-4">
+            <label for="id_nivel_satisfaccion" class="form-label">Nivel de Satisfacción</label>
+            {{ filter.form.nivel_satisfaccion }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
+</form>
+
+<!-- Tabla de resultados -->
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Edad</th>
+            <th>Género</th>
+            <th>Saldo</th>
+            <th>Activo</th>
+            <th>Nivel de Satisfacción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes_pagina %}
+        <tr>
+            <td>{{ cliente.cliente_id }}</td>
+            <td>{{ cliente.edad }}</td>
+            <td>{{ cliente.genero }}</td>
+            <td>{{ cliente.saldo }}</td>
+            <td>{{ cliente.activo }}</td>
+            <td>{{ cliente.nivel_satisfaccion }}</td>
+            <td>
+                <a href="{% url 'actualizar_cliente' cliente.pk %}" class="btn btn-warning btn-sm">
+                    <i class="fas fa-edit"></i> Editar
+                </a>
+                <a href="{% url 'eliminar_cliente' cliente.pk %}" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash-alt"></i> Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Paginación -->
+<nav>
+    <ul class="pagination justify-content-center">
+        {% if clientes_pagina.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ clientes_pagina.previous_page_number }}&registros={{ registros_por_pagina }}">Anterior</a>
+        </li>
+        {% endif %}
+
+        {% for num in clientes_pagina.paginator.page_range %}
+        {% if num >= clientes_pagina.number|add:'-2' and num <= clientes_pagina.number|add:'2' %}
+        <li class="page-item {% if clientes_pagina.number == num %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}&registros={{ registros_por_pagina }}">{{ num }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if clientes_pagina.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ clientes_pagina.next_page_number }}&registros={{ registros_por_pagina }}">Siguiente</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
