@@ -1,24 +1,38 @@
 {% extends 'base.html' %}
 
-{% block title %}Actualizar Cliente{% endblock %}
+{% block title %}Crear Cliente{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="text-center">Actualizar Cliente</h1>
-    <form method="post" class="mt-4">
-        {% csrf_token %}
-        <div class="card p-4 shadow-sm">
-            {{ form.as_p }}
-            <div class="d-flex justify-content-end mt-3">
-                <button type="submit" class="btn btn-primary me-2">
-                    <i class="fas fa-save"></i> Actualizar
-                </button>
-                <a href="{% url 'listar_clientes' %}" class="btn btn-secondary">
-                    <i class="fas fa-arrow-left"></i> Volver
-                </a>
-            </div>
-        </div>
-    </form>
-</div>
+<h1 class="text-center">Crear Cliente</h1>
+<form method="post" class="form">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="id_cliente_id" class="form-label">Cliente ID:</label>
+        {{ form.cliente_id }}
+    </div>
+    <div class="mb-3">
+        <label for="id_edad" class="form-label">Edad:</label>
+        {{ form.edad }}
+    </div>
+    <div class="mb-3">
+        <label for="id_genero" class="form-label">Género:</label>
+        {{ form.genero }}
+    </div>
+    <div class="mb-3">
+        <label for="id_saldo" class="form-label">Saldo:</label>
+        {{ form.saldo }}
+    </div>
+    <div class="mb-3">
+        <label for="id_activo" class="form-label">Activo:</label>
+        {{ form.activo }}
+    </div>
+    <div class="mb-3">
+        <label for="id_nivel_satisfaccion" class="form-label">Nivel de Satisfacción:</label>
+        {{ form.nivel_satisfaccion }}
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="/" class="btn btn-secondary">Volver</a>
+</form>
 {% endblock %}
+
 
