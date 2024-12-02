@@ -6,9 +6,31 @@
 <h1 class="text-center">Crear Cliente</h1>
 <form method="post" class="form">
     {% csrf_token %}
-    {{ form.as_p }}
+    <div class="mb-3">
+        <label for="id_cliente_id" class="form-label">Cliente ID:</label>
+        {{ form.cliente_id }}
+    </div>
+    <div class="mb-3">
+        <label for="id_edad" class="form-label">Edad:</label>
+        {{ form.edad }}
+    </div>
+    <div class="mb-3">
+        <label for="id_genero" class="form-label">Género:</label>
+        {{ form.genero }}
+    </div>
+    <div class="mb-3">
+        <label for="id_saldo" class="form-label">Saldo:</label>
+        {{ form.saldo }}
+    </div>
+    <div class="mb-3">
+        <label for="id_activo" class="form-label">Activo:</label>
+        {{ form.activo }}
+    </div>
+    <div class="mb-3">
+        <label for="id_nivel_satisfaccion" class="form-label">Nivel de Satisfacción:</label>
+        {{ form.nivel_satisfaccion }}
+    </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
     <a href="/" class="btn btn-secondary">Volver</a>
 </form>
 {% endblock %}
-
