@@ -112,3 +112,10 @@ http://<tu.ip>/crear/
 http://<tu.ip>/estadisticas/
 http://<tu.ip>/filtrar/
 ```
+
+### Comando git
+desde un navegador ingresar a las siguientes urls
+```bash
+git pull
+git push
+```
